@@ -1,0 +1,26 @@
+<html>
+<head>
+  <title>Mgu</title>
+  <link rel="icon" type="image/png" href="http://www.mailgun.com/static/img/favicon.png">
+  <link rel="stylesheet" href="index.css">
+</head>
+<body>
+<div id="mail-form">
+  <label for="mail-from">From:</label>
+  <input id="mail-from" type="text" v-model="mail.from">
+  <br>
+  <label for="mail-to">to:</label>
+  <input id="mail-to" type="text" v-model="mail.to">
+  <br>
+  <label for="mail-subject">Subject: </label>
+  <input id="mail-subject" type="text" v-model="mail.subject">
+  <br>
+  <textarea rows="15" v-model="mail.text"></textarea>
+  <br>
+  <button v-on:click="send">send</button>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/1.0.4/vue.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+<script src="index.js"></script>
+</body>
+</html>

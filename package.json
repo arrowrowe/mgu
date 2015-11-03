@@ -1,0 +1,37 @@
+{
+  "name": "mgu",
+  "version": "0.0.1",
+  "description": "A minified Mailgun web app.",
+  "main": "app.js",
+  "scripts": {
+    "test": "eslint .",
+    "postinstall": "node app/init",
+    "app": "node app"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/arrowrowe/mgu.git"
+  },
+  "keywords": [
+    "Mailgun",
+    "mail",
+    "spa"
+  ],
+  "author": "arrowrowe <arrowrowe@gmail.com> (https://github.com/arrowrowe)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/arrowrowe/mgu/issues"
+  },
+  "homepage": "https://github.com/arrowrowe/mgu",
+  "dependencies": {
+    "chalk": "1.1.1",
+    "express": "4.13.3",
+    "fs-extra": "0.26.2",
+    "inquirer": "0.11.0",
+    "log4js": "0.6.27",
+    "strip-json-comments": "1.0.4"
+  },
+  "devDependencies": {
+    "eslint": "1.8.0"
+  }
+}
