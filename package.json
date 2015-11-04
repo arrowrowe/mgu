@@ -5,7 +5,8 @@
   "main": "app.js",
   "scripts": {
     "test": "eslint .",
-    "postinstall": "node app/init",
+    "postinstall": "npm run init",
+    "init": "node app/init",
     "app": "node app"
   },
   "repository": {
