@@ -3,7 +3,7 @@
 
   'use strict';
 
-  var x = new Vue({
+  new Vue({
     el: '#mail-form',
     data: {
       mail: {

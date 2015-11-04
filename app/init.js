@@ -75,7 +75,7 @@ var domainManager = {
     var self = this;
     this.showDomains(this.domains = config.env.domains);
     this.addDomain(function () {
-      log.info(chalk.blue('Already %d domains now.'), self.domainCount)
+      log.info(chalk.blue('Already %d domains now.'), self.domainCount);
       config.save();
       self.setServer();
     });
