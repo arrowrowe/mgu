@@ -56,12 +56,28 @@ var domainManager = {
       self.addDomain(fnAfterAdded);
     });
   },
+  setServer: function () {
+    var isStringNumberic = function (s) {
+      return /^\d+$/.test(s) || 'Please enter an integer';
+    };
+    inquirer.prompt([{
+      name: 'port',
+      type: 'input',
+      message: 'The local server will listen to port',
+      default: config.env.server.port,
+      validate: isStringNumberic
+    }], function (answers) {
+      config.env.server.port = answers.port;
+      config.save();
+    });
+  },
   init: function () {
     var self = this;
     this.showDomains(this.domains = config.env.domains);
     this.addDomain(function () {
       log.info(chalk.blue('Already %d domains now.'), self.domainCount)
       config.save();
+      self.setServer();
     });
   }
 };
