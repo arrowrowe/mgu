@@ -6,21 +6,19 @@
 </head>
 <body>
 <div id="mail-form">
-  <label for="mail-from">From:</label>
-  <input id="mail-from" type="text" v-model="mail.from">
-  <br>
-  <label for="mail-to">to:</label>
-  <input id="mail-to" type="text" v-model="mail.to">
-  <br>
-  <label for="mail-subject">Subject: </label>
-  <input id="mail-subject" type="text" v-model="mail.subject">
-  <br>
-  <textarea rows="15" v-model="mail.text"></textarea>
-  <br>
+  <input type="text" v-model="domain" placeholder="from">
+  <input type="text" v-model="mail.from" placeholder="from">
+  <input type="text" v-model="mail.to" placeholder="to">
+  <input type="text" v-model="mail.subject" placeholder="subject">
+  <div class="flex">
+    <textarea rows="15" v-model="mail.text"></textarea>
+    <div v-html="mail.text | marked"></div>
+  </div>
   <button v-on:click="send">send</button>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/1.0.4/vue.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/marked/0.3.5/marked.min.js"></script>
 <script src="index.js"></script>
 </body>
 </html>
