@@ -6,12 +6,13 @@
 </head>
 <body>
 <div id="mail-form">
-  <input type="text" v-model="domain" placeholder="from">
+  <input type="text" v-model="domain" placeholder="domain">
+  <input type="password" v-model="password">
   <input type="text" v-model="mail.from" placeholder="from">
   <input type="text" v-model="mail.to" placeholder="to">
   <input type="text" v-model="mail.subject" placeholder="subject">
   <div class="flex">
-    <textarea rows="15" v-model="mail.text"></textarea>
+    <textarea rows="15" v-model="mail.text" placeholder="body"></textarea>
     <div v-html="mail.text | marked"></div>
   </div>
   <button v-on:click="send">send</button>

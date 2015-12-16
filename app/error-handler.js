@@ -3,11 +3,15 @@ var log = require('./log');
 
 module.exports = {
   errors: {
-    'DOMAIN_NOT_AUTHORIZED_OR_RECORDED': function (domain) {
-      log.warn('Domain "%s" not recorded', chalk.red(domain));
+    'DOMAIN_NOT_AUTHORIZED_OR_RECORDED': function (params) {
+      if ('password' in params) {
+        log.warn('Wrong password "%s" for domain "%s".', chalk.red(params.password), chalk.red(params.domain));
+      } else {
+        log.warn('Unknown domain "%s".', chalk.red(params.domain));
+      }
       return {
         status: 403,
-        message: 'Domain "' + domain + '" not authorized or recorded, please confirm your current account and contact the site administrator.'
+        message: 'Domain "' + params.domain + '" not authorized or recorded, please confirm your current account and contact the site administrator.'
       };
     },
     'MAILGUN_ERROR': function (err) {

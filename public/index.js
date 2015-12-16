@@ -8,17 +8,19 @@
   new Vue({
     el: '#mail-form',
     data: {
-      domain: 'dongyue.io',
+      domain: '',
+      password: '',
       mail: {
-        from: 'xbox@dongyue.io',
-        to: 'arrowrowe@gmail.com',
-        subject: 'Try MGU-Express',
-        text: 'Hi there!\nMiehahahaha~'
+        from: '',
+        to: '',
+        subject: '',
+        text: ''
       }
     },
     methods: {
       send: function () {
         $.post('/api/v1/' + this.domain + '/send', {
+          password: this.password,
           from: this.mail.from,
           to: this.mail.to,
           subject: this.mail.subject,
