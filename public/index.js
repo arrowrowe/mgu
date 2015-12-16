@@ -23,6 +23,7 @@
       send: function () {
         var that = this;
         this.busy = true;
+        this.text = 'sending...';
         $.post('/api/v1/' + this.domain + '/send', {
           password: this.password,
           from: this.mail.from,
