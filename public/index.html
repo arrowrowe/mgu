@@ -15,7 +15,8 @@
     <textarea rows="15" v-model="mail.text" placeholder="body"></textarea>
     <div v-html="mail.text | marked"></div>
   </div>
-  <button v-on:click="send">send</button>
+  <button v-on:click="send" :disabled="busy" v-text="busy ? 'sending' : 'send'">send</button>
+  <span v-text="text"></span>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/1.0.4/vue.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>

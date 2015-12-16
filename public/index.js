@@ -8,6 +8,8 @@
   new Vue({
     el: '#mail-form',
     data: {
+      busy: false,
+      text: '',
       domain: '',
       password: '',
       mail: {
@@ -19,14 +21,18 @@
     },
     methods: {
       send: function () {
+        var that = this;
+        this.busy = true;
         $.post('/api/v1/' + this.domain + '/send', {
           password: this.password,
           from: this.mail.from,
           to: this.mail.to,
           subject: this.mail.subject,
           text: this.mail.text
-        }, function () {
+        }).always(function (rep) {
           console.log(arguments);
+          that.busy = false;
+          that.text = (rep && rep.responseJSON && rep.responseJSON.message || JSON.stringify(rep)) || 'no response';
         });
       }
     }
