@@ -43,6 +43,11 @@ var domainManager = {
       type: 'input',
       message: 'Input the full API key',
       when: isDomainWanted
+    }, {
+      name: 'password',
+      type: 'input',
+      message: 'Set your custom password for this domain',
+      when: isDomainWanted
     }], function (answers) {
       if (!isDomainWanted(answers)) {
         fnAfterAdded();
@@ -51,7 +56,8 @@ var domainManager = {
       self.domainCount++;
       self.domains[answers.domain] = {
         api: answers.api,
-        key: answers.key
+        key: answers.key,
+        password: answers.password
       };
       self.addDomain(fnAfterAdded);
     });
