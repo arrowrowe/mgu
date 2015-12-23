@@ -3,7 +3,6 @@ var chalk = require('chalk');
 var mailgun = require('mailgun-send');
 var errorHandler = require('../error-handler');
 var config = require('../config');
-var marked = require('marked');
 
 module.exports = function (app) {
   app.post('/api/v1/:domain/send', function (req, res) {
@@ -17,7 +16,7 @@ module.exports = function (app) {
     mailgun.send({
       subject: mail.subject,
       recipient: mail.to,
-      body: marked(mail.text)
+      body: mail.text
     }, function (err) {
       if (err) {
         errorHandler.send(res, 'MAILGUN_ERROR', err);

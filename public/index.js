@@ -3,12 +3,25 @@
 
   'use strict';
 
-  Vue.filter('marked', marked);
+  var option = {
+    markdown: true
+  };
+  var parseRaw = function (raw) {
+    console.log(option, raw);
+    return option.markdown ? marked(raw) : raw;
+  };
+
+  Vue.filter('parseRaw', parseRaw);
 
   new Vue({
     el: '#mail-form',
     data: {
       busy: false,
+      option: option,
+      choices: [
+        {value: true, text: 'Markdown'},
+        {value: false, text: 'HTML'},
+      ],
       text: '',
       domain: '',
       password: '',
@@ -29,7 +42,7 @@
           from: this.mail.from,
           to: this.mail.to,
           subject: this.mail.subject,
-          text: this.mail.text
+          text: parseRaw(this.mail.text)
         }).always(function (rep) {
           console.log(arguments);
           that.busy = false;

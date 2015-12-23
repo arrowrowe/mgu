@@ -11,9 +11,16 @@
   <input type="text" v-model="mail.from" placeholder="from">
   <input type="text" v-model="mail.to" placeholder="to">
   <input type="text" v-model="mail.subject" placeholder="subject">
+  <div>
+    <select v-model="option.markdown">
+      <option v-for="choice in choices" v-bind:value="choice.value">
+        {{ choice.text }}
+      </option>
+    </select>
+  </div>
   <div class="flex">
     <textarea rows="15" v-model="mail.text" placeholder="body"></textarea>
-    <div v-html="mail.text | marked"></div>
+    <div v-html="mail.text | parseRaw"></div>
   </div>
   <button v-on:click="send" :disabled="busy" v-text="busy ? 'sending' : 'send'">send</button>
   <span v-text="text"></span>
