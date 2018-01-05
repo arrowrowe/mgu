@@ -32,7 +32,7 @@
     "inquirer": "0.11.0",
     "log4js": "0.6.27",
     "mailgun-send": "0.0.3",
-    "marked": "0.3.5",
+    "marked": "0.3.9",
     "strip-json-comments": "1.0.4"
   },
   "devDependencies": {
